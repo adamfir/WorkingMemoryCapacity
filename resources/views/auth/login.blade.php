@@ -31,15 +31,25 @@
     <!-- /.login-logo -->
     <div class="login-box-body">
       <p class="login-box-msg">Masuk untuk memulai tes</p>
-
-      <form action="index2.html" method="post">
+      <form action="{{ route('login') }}" method="post">
+        @csrf
         <div class="form-group has-feedback">
-          <input type="email" class="form-control" placeholder="Email">
+          <input type="email" class="form-control" placeholder="Email" name="email">
           <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+          @if ($errors->has('email'))
+              <span class="invalid-feedback" role="alert">
+                  <strong>{{ $errors->first('email') }}</strong>
+              </span>
+          @endif
         </div>
         <div class="form-group has-feedback">
-          <input type="password" class="form-control" placeholder="Password">
+          <input type="password" class="form-control" placeholder="Password" name="password">
           <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+          @if ($errors->has('password'))
+              <span class="invalid-feedback" role="alert">
+                  <strong>{{ $errors->first('password') }}</strong>
+              </span>
+          @endif
         </div>
         <div class="row">
           <div class="col-xs-8">

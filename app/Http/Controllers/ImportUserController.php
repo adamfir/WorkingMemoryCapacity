@@ -7,6 +7,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\UsersImport;
 use App\User;
 use Storage;
+use Illuminate\Support\Facades\Hash;
 
 class ImportUserController extends Controller
 {
@@ -18,6 +19,7 @@ class ImportUserController extends Controller
 
             foreach($excel_data[0] as $user){
                 $user = new User($user->toArray());
+                $user->password = Hash::make($user->password);
                 $user->save();
             }
             $message = '';

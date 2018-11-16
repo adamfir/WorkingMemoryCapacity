@@ -15,3 +15,7 @@ Route::get('/', function () {
     return view('home');
 });
 
+
+Route::get('/EmotionalQuestion', 'EmotionalQuestionController@index');
+Route::get('/ChoosePractice', 'ChoosePracticeController@index');
+

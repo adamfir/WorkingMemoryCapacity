@@ -19,3 +19,7 @@ Route::get('/', function () {
 Route::get('/EmotionalQuestion', 'EmotionalQuestionController@index');
 Route::get('/ChoosePractice', 'ChoosePracticeController@index');
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/import_user', 'ImportUserController@import')->name('import_user');

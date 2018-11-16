@@ -18,6 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('ttl');
+            $table->string('gender');
             $table->string('universitas');
             $table->string('jurusan');
             $table->string('fakultas');
@@ -26,8 +28,8 @@ class CreateUsersTable extends Migration
             $table->string('skor_ec');
             $table->string('jumlah_hafalan');
             $table->string('lama_menghafal');
-            $table->string('serial');
-            $table->string('iteration');
+            $table->string('serial')->default(2);
+            $table->string('iteration')->default(1);
             $table->string('role');
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();

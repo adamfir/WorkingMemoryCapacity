@@ -24,6 +24,17 @@
 </head>
 
 <body class="hold-transition register-page">
+    @if ($message = Session::get('success'))
+        <div class="callout callout-success">
+            <h4>Sukses membuat user!</h4>
+            <p>{{$message}}</p>
+        </div>
+    @elseif ($message = Session::get('error'))
+        <div class="callout callout-danger">
+            <h4>Gagal membuat user!</h4>
+            <p>{{$message}}</p>
+        </div>
+    @endif
     <div class="register-box">
         <div class="register-logo">
             <a href="#"><b>Tes Kapasitas Working Memory</b></a>
@@ -32,9 +43,14 @@
         <div class="register-box-body">
             <p class="login-box-msg">Daftar anggota baru</p>
 
-            <form action="{{ route('register') }}" method="post">
+            <form action="{{ route('import_user') }}" method="post" enctype="multipart/form-data">
                 @csrf
-                <div class="form-group has-feedback ">
+                <div class="form-group">
+                    <label for="exampleInputFile">Data</label>
+                    <input name="excel_data" type="file" id="exampleInputFile" required>
+                    <p class="help-block">Masukan file excel berisi daftar user</p>
+                </div>
+                {{-- <div class="form-group has-feedback ">
                     <input type="text " class="form-control " placeholder="Full name " name="name">
                     <span class="glyphicon glyphicon-user form-control-feedback "></span>
                 </div>
@@ -93,7 +109,7 @@
                 <div class="form-group has-feedback ">
                     <input type="text " class="form-control " placeholder="Role " name="role">
                     <span class="glyphicon glyphicon-user form-control-feedback "></span>
-                </div>
+                </div> --}}
                 <div class="row ">
                     <div class="col-xs-8 "></div>
                     <div class="col-xs-4 ">

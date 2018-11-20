@@ -16,8 +16,10 @@ Route::get('/', function () {
 });
 
 
-Route::get('/EmotionalQuestion', 'EmotionalQuestionController@index');
-Route::get('/ChoosePractice', 'ChoosePracticeController@index');
+Route::get('/EmotionalQuestion', 'EmotionalQuestionController@index')->name('EmotionalQuestion');
+Route::get('/ChoosePractice', 'ChoosePracticeController@index')->name('ChoosePractice');
+Route::get('/ReadingSpanWord', 'ReadingSpanController@word')->name('ReadingSpanWord');
+Route::get('/ReadingSpanSentence', 'ReadingSpanController@sentence')->name('ReadingSpanSentence');
 
 Auth::routes();
 

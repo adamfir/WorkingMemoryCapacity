@@ -43,73 +43,13 @@
         <div class="register-box-body">
             <p class="login-box-msg">Daftar anggota baru</p>
 
-            <form action="{{ route('import_user') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('import.user') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="exampleInputFile">Data</label>
                     <input name="excel_data" type="file" id="exampleInputFile" required>
                     <p class="help-block">Masukan file excel berisi daftar user</p>
                 </div>
-                {{-- <div class="form-group has-feedback ">
-                    <input type="text " class="form-control " placeholder="Full name " name="name">
-                    <span class="glyphicon glyphicon-user form-control-feedback "></span>
-                </div>
-                <div class="form-group has-feedback ">
-                    <input type="text " class="form-control " placeholder="Tempat Tanggal Lahir " name="ttl">
-                    <span class="glyphicon glyphicon-user form-control-feedback "></span>
-                </div>
-                <div class="form-group has-feedback ">
-                    <input type="text " class="form-control " placeholder="Jenis Kelamin " name="gender">
-                    <span class="glyphicon glyphicon-user form-control-feedback "></span>
-                </div>
-                <div class="form-group has-feedback ">
-                    <input type="email " class="form-control " placeholder="Email " name="email">
-                    <span class="glyphicon glyphicon-envelope form-control-feedback "></span>
-                </div>
-                <div class="form-group has-feedback ">
-                    <input type="password " class="form-control " placeholder="Password " name="password">
-                    <span class="glyphicon glyphicon-lock form-control-feedback "></span>
-                </div>
-                <div class="form-group has-feedback ">
-                    <input type="password " class="form-control " placeholder="Retype password">
-                    <span class="glyphicon glyphicon-log-in form-control-feedback "></span>
-                </div>
-                <div class="form-group has-feedback ">
-                    <input type="text " class="form-control " placeholder="Universitas " name="universitas">
-                    <span class="glyphicon glyphicon-user form-control-feedback "></span>
-                </div>
-                <div class="form-group has-feedback ">
-                    <input type="text " class="form-control " placeholder="Jurusan " name="jurusan">
-                    <span class="glyphicon glyphicon-user form-control-feedback "></span>
-                </div>
-                <div class="form-group has-feedback ">
-                    <input type="text " class="form-control " placeholder="Fakultas " name="fakultas">
-                    <span class="glyphicon glyphicon-user form-control-feedback "></span>
-                </div>
-                <div class="form-group has-feedback ">
-                    <input type="text " class="form-control " placeholder="Semester " name="semester">
-                    <span class="glyphicon glyphicon-user form-control-feedback "></span>
-                </div>
-                <div class="form-group has-feedback ">
-                    <input type="text " class="form-control " placeholder="Skor Kecerdasan " name="skor_kecerdasan">
-                    <span class="glyphicon glyphicon-user form-control-feedback "></span>
-                </div>
-                <div class="form-group has-feedback ">
-                    <input type="text " class="form-control " placeholder="Skor EC " name="skor_ec">
-                    <span class="glyphicon glyphicon-user form-control-feedback "></span>
-                </div>
-                <div class="form-group has-feedback ">
-                    <input type="text " class="form-control " placeholder="Jumlah Hafalan " name="jumlah_hafalan">
-                    <span class="glyphicon glyphicon-user form-control-feedback "></span>
-                </div>
-                <div class="form-group has-feedback ">
-                    <input type="text " class="form-control " placeholder="Lama Menghafal " name="lama_menghafal">
-                    <span class="glyphicon glyphicon-user form-control-feedback "></span>
-                </div>
-                <div class="form-group has-feedback ">
-                    <input type="text " class="form-control " placeholder="Role " name="role">
-                    <span class="glyphicon glyphicon-user form-control-feedback "></span>
-                </div> --}}
                 <div class="row ">
                     <div class="col-xs-8 "></div>
                     <div class="col-xs-4 ">

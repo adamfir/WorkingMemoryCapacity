@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('home');
+    return redirect('/admin');
 });
 
 
@@ -23,5 +23,23 @@ Route::get('/ReadingSpanSentence', 'ReadingSpanController@sentence')->name('Read
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::post('/import_user', 'ImportUserController@import')->name('import_user');
+Route::get('/home', function () {
+    return redirect('/admin');
+})->name('home');
+
+Route::prefix('import')->name('import.')->group(function() {
+    Route::post('user', 'ImportDataController@userImport')->name('user');
+    Route::post('emotional', 'ImportDataController@EmotionalQuestionImport')->name('emotional');
+    Route::post('word', 'ImportDataController@WordImport')->name('word');
+    Route::post('sentence', 'ImportDataController@SentenceImport')->name('sentence');
+});
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/', 'HomeController@index')->name('home');
+    Route::prefix('input')->name('input.')->group(function () {
+        Route::get('user', 'InputPageController@UserPage')->name('user');
+        Route::get('kuesioner', 'InputPageController@KuesionerPage')->name('kuesioner');
+        Route::get('kata', 'InputPageController@SerialKataPage')->name('kata');
+        Route::get('kalimat', 'InputPageController@SerialKalimatPage')->name('kalimat');
+        Route::get('gambar', 'InputPageController@InputGambarPage')->name('gambar');
+    });
+});

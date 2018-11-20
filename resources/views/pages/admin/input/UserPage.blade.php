@@ -14,6 +14,11 @@
  
 @section('content')
 <section class="content">
+    @if (Session::get('success'))
+        <div class="callout callout-success">
+            <h4>Sukses mengupload data peserta!</h4>
+        </div>
+    @endif
     <div class="row">
         <div class="col-md-12">
             <div class="box box-primary">
@@ -22,7 +27,7 @@
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
-                <form action="{{ route('import_user') }}" method="post" enctype="multipart/form-data" role="form">
+                <form action="{{ route('import.user') }}" method="post" enctype="multipart/form-data" role="form">
                     @csrf
                     <div class="box-body">
                         <div class="form-group">

@@ -43,7 +43,7 @@
         <div class="register-box-body">
             <p class="login-box-msg">Daftar anggota baru</p>
 
-            <form action="{{ route('import_user') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('import.user') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="exampleInputFile">Data</label>

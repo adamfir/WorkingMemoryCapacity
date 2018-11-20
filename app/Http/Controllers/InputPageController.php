@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class InputDataController extends Controller
+class InputPageController extends Controller
 {
     public function __construct()
     {

@@ -21,6 +21,7 @@ Route::get('/ChoosePractice', 'ChoosePracticeController@index')->name('ChoosePra
 Route::get('/ReadingSpanWord', 'ReadingSpanController@word')->name('ReadingSpanWord');
 Route::get('/ReadingSpanSentence', 'ReadingSpanController@sentence')->name('ReadingSpanSentence');
 Route::get('/EmotionPicture', 'EmotionPictureController@index')->name('EmotionPicture');
+Route::get('/FocusPages', 'FocusController@index')->name('FocusPages');
 
 Auth::routes();
 

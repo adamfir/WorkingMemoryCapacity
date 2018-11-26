@@ -20,6 +20,7 @@ Route::get('/EmotionalQuestion', 'EmotionalQuestionController@index')->name('Emo
 Route::get('/ChoosePractice', 'ChoosePracticeController@index')->name('ChoosePractice');
 Route::get('/ReadingSpanWord', 'ReadingSpanController@word')->name('ReadingSpanWord');
 Route::get('/ReadingSpanSentence', 'ReadingSpanController@sentence')->name('ReadingSpanSentence');
+Route::get('/EmotionPicture', 'EmotionPictureController@index')->name('EmotionPicture');
 
 Auth::routes();
 

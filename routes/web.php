@@ -22,6 +22,7 @@ Route::get('/ReadingSpanWord', 'ReadingSpanController@word')->name('ReadingSpanW
 Route::get('/ReadingSpanSentence', 'ReadingSpanController@sentence')->name('ReadingSpanSentence');
 Route::get('/EmotionPicture', 'EmotionPictureController@index')->name('EmotionPicture');
 Route::get('/FocusPages', 'FocusController@index')->name('FocusPages');
+Route::get('/ArraySpanTask', 'ArraySpanTaskController@index')->name('ArraySpanTask');
 
 Auth::routes();
 

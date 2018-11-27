@@ -1,5 +1,5 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<link rel="stylesheet" type="text/css" href="css/EmotionalCSS.css">
+<link rel="stylesheet" type="text/css" href="{{asset('css/EmotionalCSS.css')}}">
 
 
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -26,7 +26,7 @@ function startTimer(duration, display) {
           //  window.location = "http://codepanda.id";
           modal.style.display = "block";
 
-          setTimeout(function(){ window.location = "/ChoosePractice";}, 10000);
+          setTimeout(function(){ window.location = "/tester/choose-task";}, 10000);
 
          }
 

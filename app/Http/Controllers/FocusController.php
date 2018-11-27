@@ -9,6 +9,6 @@ class FocusController extends Controller
     //
 
     public function index(){
-        return view('Focus');
+        return view('pages/tester/Focus');
     }
 }

@@ -1,21 +1,21 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | Buttons</title>
+    <title>Reading Span Sentences</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{asset('bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{asset('bower_components/font-awesome/css/font-awesome.min.css')}}">
     <!-- Ionicons -->
-    <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="{{asset('bower_components/Ionicons/css/ionicons.min.css')}}">
     <!-- Theme style -->
-    <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="{{asset('dist/css/AdminLTE.min.css')}}">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
-         folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
-    <link rel="stylesheet" href="css/ArraySpanTask.css">
+            folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="{{asset('dist/css/skins/_all-skins.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/ArraySpanTask.css')}}">
 
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
@@ -93,17 +93,17 @@
         <div class="container">
             <div class="row">
               <div class="col">
-                  <img src="svg/square.png" class="image"/>
+                    <img src="{{asset('svg/square.png')}}" class="image"/>
               </div>
               <div class="col">
-                  <img src="svg/circle.png" class="image"/>
+                  <img src="{{asset('svg/circle.png')}}" class="image"/>
                 </div>
               <div class="w-100"></div>
               <div class="col">
-                    <img src="svg/Triangle.png" class="image"/>
+                    <img src="{{asset('svg/Triangle.png')}}" class="image"/>
               </div>
               <div class="col">
-                    <img src="svg/square.png" class="image"/>
+                    <img src="{{asset('svg/square.png')}}" class="image"/>
               </div>
             </div>
           </div>

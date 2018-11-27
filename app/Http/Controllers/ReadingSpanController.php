@@ -9,10 +9,10 @@ class ReadingSpanController extends Controller
     //
 
     public function word(){
-        return view('ReadingSpan_Word');
+        return view('pages/tester/ReadingSpan_Word');
     }
 
     public function sentence(){
-        return view('ReadingSpan_Sentence');
+        return view('pages/tester/ReadingSpan_Sentence');
     }
 }

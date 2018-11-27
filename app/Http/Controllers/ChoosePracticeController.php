@@ -10,6 +10,6 @@ class ChoosePracticeController extends Controller
 
     public function index(){
 
-        return view("ChoosePractice");
+        return view('pages/tester/ChoosePractice');
     }
 }

@@ -10,6 +10,6 @@ class EmotionalQuestionController extends Controller
 
     public function index(){
         $time = 60;
-        return view('tester/EmotionalQuestion', compact('time'));
+        return view('pages/tester/EmotionalQuestion', compact('time'));
     }
 }

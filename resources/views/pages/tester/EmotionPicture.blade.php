@@ -5,18 +5,18 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{asset('bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{asset('bower_components/font-awesome/css/font-awesome.min.css')}}">
     <!-- Ionicons -->
-    <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="{{asset('bower_components/Ionicons/css/ionicons.min.css')}}">
     <!-- Theme style -->
-    <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="{{asset('dist/css/AdminLTE.min.css')}}">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
-    <link rel="stylesheet" href="css/ChoosePractice.css">
-    <link rel="stylesheet" href="css/EmotionPicture.css">
+    <link rel="stylesheet" href="{{asset('dist/css/skins/_all-skins.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/ChoosePractice.css')}}">
+    <link rel="stylesheet" href="{{asset('css/EmotionPicture.css')}}">
 
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
@@ -89,6 +89,6 @@
 <!------ Include the above in your HEAD tag ---------->
 <body style ="background-color: #d2d6de" > 
         <span id="time" hidden>0.00</span>
-    <img src="svg/image.jpg" class="image"/>
+    <img src="{{asset('svg/image.jpg')}}" class="image"/>
 
 </body>

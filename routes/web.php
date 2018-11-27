@@ -15,14 +15,16 @@ Route::get('/', function () {
     return redirect('/admin');
 });
 
-
-Route::get('/EmotionalQuestion', 'EmotionalQuestionController@index')->name('EmotionalQuestion');
-Route::get('/ChoosePractice', 'ChoosePracticeController@index')->name('ChoosePractice');
-Route::get('/ReadingSpanWord', 'ReadingSpanController@word')->name('ReadingSpanWord');
-Route::get('/ReadingSpanSentence', 'ReadingSpanController@sentence')->name('ReadingSpanSentence');
-Route::get('/EmotionPicture', 'EmotionPictureController@index')->name('EmotionPicture');
-Route::get('/FocusPages', 'FocusController@index')->name('FocusPages');
-
+Route::prefix('tester')->name('tester.')->group(function(){
+    Route::get('emotional-questionnaire', 'EmotionalQuestionController@index')->name('emotional-quest');
+    Route::get('choose-task', 'ChoosePracticeController@index')->name('choose-task');
+    Route::prefix('reading-span-task')->name('reading-span-')->group(function(){
+        Route::get('word', 'ReadingSpanController@word')->name('word');
+        Route::get('sentence', 'ReadingSpanController@sentence')->name('sentence');
+    });
+    Route::get('/emotional-picture', 'EmotionPictureController@index')->name('emotional-picture');
+    Route::get('/focus', 'FocusController@index')->name('focus');
+});
 Auth::routes();
 
 Route::get('/home', function () {

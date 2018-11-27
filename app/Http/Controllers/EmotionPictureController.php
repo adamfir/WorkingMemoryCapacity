@@ -8,6 +8,6 @@ class EmotionPictureController extends Controller
 {
     //
     public function index(){
-        return view('EmotionPicture');
+        return view('tester/EmotionPicture');
     }
 }

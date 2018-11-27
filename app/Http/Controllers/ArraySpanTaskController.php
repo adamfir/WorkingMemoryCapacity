@@ -8,6 +8,6 @@ class ArraySpanTaskController extends Controller
 {
     //
     public function index(){
-        return view('ArraySpanTask');
+        return view('pages/tester/ArraySpanTask');
     }
 }

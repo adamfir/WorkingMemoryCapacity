@@ -35,6 +35,7 @@
 
 
     <script>
+        var i = 0;
     function startTimer(duration, display) {
     var modal = document.getElementById('myModal');
     var start = Date.now(),
@@ -49,7 +50,7 @@
             // does the same job as parseInt truncates the float
             minutes = (diff / 60) | 0;
             seconds = (diff % 60) | 0;
-            console.log(seconds);
+        //     console.log(seconds);
 
             if(seconds == 0){
             //window.location = "/ReadingSpanSentence";
@@ -81,6 +82,33 @@
             display = document.querySelector('#time');
     startTimer(fiveMinutes, display);
     };
+
+        function myFunction(id) {
+        i++;
+        var x = document.getElementById(i);
+        if (x.style.display === "none") {
+                // x.style.display = "block";
+                x.src = "{{asset('svg/square.png')}}";
+        }
+        else{
+                if(id === 1){
+                        x.src = "{{asset('svg/square.png')}}";
+                }
+                else if(id === 2){
+                        x.src="{{asset('svg/circle.png')}}";
+                }
+                else if(id === 3){
+                        x.src="{{asset('svg/Triangle.png')}}";
+                }
+                else{
+                        x.src="{{asset('svg/square.png')}}";
+                }
+                
+        }
+        
+        console.log(x.src);
+        }
+
     </script>
   </head>
 
@@ -91,22 +119,41 @@
             <h1><b>Time <span id="time" style="color: red">0.00</span></b></h1><br>
         </div>
         <div class="container">
-            <div class="row">
-              <div class="col">
-                    <img src="{{asset('svg/square.png')}}" class="image"/>
-              </div>
-              <div class="col">
-                  <img src="{{asset('svg/circle.png')}}" class="image"/>
+                <div class="split left" >
+                        <div class="row">
+                                <div class="col">
+                                        <img id="1" class="image"/>
+                                </div>
+                                <div class="col" onClick ="myFunction()">
+                                        <img  id="2" class="image"/>
+                                        </div>
+                                <div class="w-100"></div>
+                                <div class="col">
+                                        <img id= "3" class="image"/>
+                                </div>
+                                <div class="col">
+                                        <img id="4" class="image"/>
+                                </div>
+                        </div>
                 </div>
-              <div class="w-100"></div>
-              <div class="col">
-                    <img src="{{asset('svg/Triangle.png')}}" class="image"/>
-              </div>
-              <div class="col">
-                    <img src="{{asset('svg/square.png')}}" class="image"/>
-              </div>
-            </div>
-          </div>
+                <div class="split right" >
+                                <div class="row">
+                                        <div class="col" onClick="myFunction(1)">
+                                                <img src="{{asset('svg/square.png')}}" class="image"/>
+                                        </div>
+                                        <div class="col" onClick ="myFunction(2)">
+                                                <img src="{{asset('svg/circle.png')}}" class="image"/>
+                                                </div>
+                                        {{-- <div class="w-100"></div> --}}
+                                        <div class="col" onClick="myFunction(3)">
+                                                <img src="{{asset('svg/Triangle.png')}}" class="image"/>
+                                        </div>
+                                        <div class="col" onClick="myFunction(4)">
+                                                <img src="{{asset('svg/square.png')}}" class="image"/>
+                                        </div>
+                                </div>
+                        </div>
+        </div>
 
 
 </body>

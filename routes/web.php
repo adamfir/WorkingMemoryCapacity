@@ -48,3 +48,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('gambar', 'InputPageController@InputGambarPage')->name('gambar');
     });
 });
+
+Route::get('/vue', function(){
+    return view('welcome');
+});

@@ -8,7 +8,9 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
-
+// window.Vuetify = require('vuetify');
+import Vuetify from 'vuetify';
+import 'vuetify/dist/vuetify.min.css';
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -16,6 +18,9 @@ window.Vue = require('vue');
  */
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('example', require('./components/Example.vue'));
+Vue.component('home', require('./components/Home.vue'));
+Vue.use(Vuetify);
 
 const app = new Vue({
     el: '#app'

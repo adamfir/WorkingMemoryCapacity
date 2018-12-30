@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Sentence extends Model
+class EmotionalQuestionAnswer extends Model
 {
     protected $fillable = [
-        'seri', 'iterasi', 'sentences', 'sentence', 'correct_answer'
+        'user_id', 'emotional_question_id', 'answer'
     ];
 }

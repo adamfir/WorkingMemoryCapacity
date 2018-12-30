@@ -21,7 +21,10 @@ class SentencesImport implements ToCollection, WithHeadingRow
         foreach ($rows as $row) 
         {
             Sentence::create([
+                'seri' => $row['seri'],
+                'iterasi' => $row['iterasi'],
                 'sentence' => $row['sentence'],
+                'sentences' => $row['sentences'],
                 'correct_answer' => $row['correct_answer']
             ]);
         }

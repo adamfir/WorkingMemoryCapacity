@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,24 +14,47 @@
 */
 
 Route::get('/', function () {
-    return redirect('/admin');
+    if(!Auth::user()){
+        return redirect('/login');
+    }
+    if (Auth::user()->role == 1){
+        return redirect('/admin');
+    }
+    else if (Auth::user()->role >= 2){
+        return redirect('/tester');
+    }
 });
 
 Route::prefix('tester')->name('tester.')->group(function(){
+    Route::get('/', 'TestController@index')->name('home');
     Route::get('emotional-questionnaire', 'EmotionalQuestionController@index')->name('emotional-quest');
-    Route::get('choose-task', 'ChoosePracticeController@index')->name('choose-task');
+    Route::post('emotional-questionnaire', 'EmotionalQuestionController@submit')->name('emotional-quest-answer');
+    Route::get('/focus/{task}/{seri}/{iterasi}/{focusKe}', 'TestController@focus')->name('focus');
     Route::prefix('reading-span-task')->name('reading-span-')->group(function(){
-        Route::get('word', 'ReadingSpanController@word')->name('word');
-        Route::get('sentence', 'ReadingSpanController@sentence')->name('sentence');
+        Route::get('learn/{seri}/{iterasi}', 'ReadingSpanController@learn')->name('learn');
+        Route::get('judge/{taskId}', 'ReadingSpanController@judge')->name('judge');
+        Route::get('judge-answer/{taskId}/{ans}', 'ReadingSpanController@judgeAns')->name('judgeAns');
+        Route::get('recall/{taskId}', 'ReadingSpanController@recall')->name('recall');
+        Route::post('recall-answer/{taskId}', 'ReadingSpanController@recallAns')->name('recallAns');
     });
+    // old
+    // Route::get('emotional-questionnaire', 'EmotionalQuestionController@index')->name('emotional-quest');
+    Route::get('choose-task', 'ChoosePracticeController@index')->name('choose-task');
+    // Route::prefix('reading-span-task')->name('reading-span-')->group(function(){
+    //     Route::get('sentence', 'ReadingSpanController@sentence')->name('sentence');
+    // });
     Route::get('/emotional-picture', 'EmotionPictureController@index')->name('emotional-picture');
-    Route::get('/focus', 'FocusController@index')->name('focus');
     Route::get('/ArraySpanTask', 'ArraySpanTaskController@index')->name('ArraySpanTask');
 });
 Auth::routes();
 
 Route::get('/home', function () {
-    return redirect('/admin');
+    if (Auth::user()->role == 1){
+        return redirect('/admin');
+    }
+    else{
+        return redirect('/tester');
+    }
 })->name('home');
 
 Route::prefix('import')->name('import.')->group(function() {
@@ -50,5 +75,5 @@ Route::prefix('admin')->name('admin.')->group(function () {
 });
 
 Route::get('/vue', function(){
-    return view('welcome');
+    return view('pages/test/home');
 });

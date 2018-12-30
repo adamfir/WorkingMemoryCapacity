@@ -18,15 +18,14 @@ class CreateReadingSpanTasksTable extends Migration
             $table->unsignedInteger('user_id');
             $table->string('serial');
             $table->string('iteration');
-            $table->unsignedInteger('word_id');
-            $table->string('word_answer');
+            $table->string('word_id');
+            $table->string('word_answer')->nullable()->default(null);
             $table->unsignedInteger('sentence_id');
-            $table->string('sentence_answer');
-            $table->unsignedInteger('image_id');
+            $table->string('sentence_answer')->nullable()->default(null);;
+            $table->unsignedInteger('image_id')->nullable()->default(null);
             
 
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('word_id')->references('id')->on('words');
             $table->foreign('sentence_id')->references('id')->on('sentences');
             $table->foreign('image_id')->references('id')->on('images');
             $table->timestamps();

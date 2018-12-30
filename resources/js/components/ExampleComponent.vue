@@ -1,21 +1,37 @@
 <template>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Example Component</div>
-
-                    <div class="card-body">
-                        I'm an example component.
-                    </div>
-                </div>
-            </div>
+    <v-app>
+        <div class="text-xs-center">
+            <v-menu offset-y>
+                <v-btn
+                    slot="activator"
+                    color="green"
+                    dark
+                >
+                    Dropdown
+                </v-btn>
+                <v-list>
+                    <v-list-tile
+                    v-for="(item, index) in items"
+                    :key="index"
+                    >
+                    <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+                    </v-list-tile>
+                </v-list>
+            </v-menu>
         </div>
-    </div>
+    </v-app>
 </template>
 
 <script>
     export default {
+        data: () => ({
+        items: [
+            { title: 'Click Me' },
+            { title: 'Click Me' },
+            { title: 'Click Me' },
+            { title: 'Click Me 2' }
+        ]
+        }),
         mounted() {
             console.log('Component mounted.')
         }

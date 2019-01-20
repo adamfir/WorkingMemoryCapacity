@@ -16,7 +16,7 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins
             folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="{{asset('dist/css/skins/_all-skins.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/ArraySpanTask.css')}}">
+    <link rel="stylesheet" href="{{asset('css/ArraySpanTaskRead.css')}}">
 
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
@@ -36,11 +36,8 @@
 
 
     <script>
-        var j = 0;
-        var pict = [];
-        var soal = [];
-        var jawaban = [];
-
+        var i = 0;
+        var Pict = [];
     function startTimer(duration, display) {
     var modal = document.getElementById('myModal');
     var start = Date.now(),
@@ -58,11 +55,25 @@
         //     console.log(seconds);
 
             if(seconds == 0){
-            //window.location = "/ReadingSpanSentence";
+            window.location = "/tester/ArraySpanTask/Test?params0="+Pict[0]+"&params1="+Pict[1]+"&params2="+Pict[2]+"&params3="+Pict[3];
+            //window.location = "/tester/ArraySpanTask/Test";
             //modal.style.display = "block";
 
             //setTimeout(function(){ window.location = "/ChoosePractice";}, 10000);
 
+
+            $.ajax({
+                        url: '/tester/ArraySpanTask/Test',
+                        type: "get",
+                        data: {'Array0': Pict[0], 'Array1': Pict[1], "Array2": Pict[2], "Array3": Pict[3]},
+                        dataType: 'JSON',
+                        beforeSend: function (request) {
+                                return request.setRequestHeader('X-CSRF-Token', $("meta[name='csrf-token']").attr('content'));
+                        },
+                        success: function (data) {
+                        console.log(data); // this is good
+                        }
+            });
             }
 
             minutes = minutes < 10 ? "0" + minutes : minutes;
@@ -86,17 +97,32 @@
     var fiveMinutes = times,
             display = document.querySelector('#time');
     startTimer(fiveMinutes, display);
-    soal[0] = <?= $params0 ?>;
-    soal[1] =  <?= $params1 ?>;
-    soal[2] =  <?= $params2 ?>;
-    soal[3]=  <?= $params3 ?>;
-
-    console.log(soal);
+    random();
+    
+    for(var i = 0 ; i<4; i++){
+        var x = document.getElementById(i);
+        if(Pict[i] === 1){
+                x.src = "{{asset('svg/square.png')}}";
+        }
+        else if(Pict[i] === 2){
+                x.src="{{asset('svg/circle.png')}}";
+        }
+        else if(Pict[i] === 3){
+                x.src="{{asset('svg/Triangle.png')}}";
+        }
+        else{
+                x.src="{{asset('svg/square.png')}}";
+        }
+        
+        }
     };
 
+    //random
+
+
         function myFunction(id) {
-        j++;
-        var x = document.getElementById(j);
+        i++;
+        var x = document.getElementById(i);
         if (x.style.display === "none") {
                 // x.style.display = "block";
                 x.src = "{{asset('svg/square.png')}}";
@@ -120,33 +146,36 @@
                 }
                 
         }
-        if(j === 4){
+        if(i === 4){
                 //post('/tester/ArrayPost', {Pict1:'1', Pict2:'2', Pict3:'3', Pict4:'4'});
 
-                for(var i=0; i<4;i++){
-                        if(pict[i] == soal[i]){
-                                jawaban[i] = true;
-                        }
-                        else{
-                                jawaban[i] = false;
-                        }
-                }
-                console.log(jawaban);
-
-                $.ajax({
-                        url: '/tester/ArraySpanTask/ArrayPost',
-                        type: "post",
-                        data: {'Pict1':jawaban[0], 'Pict2': jawaban[1], 'Pict3' : jawaban[2], 'Pict4': jawaban[3]},
-                        dataType: 'JSON',
-                        beforeSend: function (request) {
-                                return request.setRequestHeader('X-CSRF-Token', $("meta[name='csrf-token']").attr('content'));
-                        },
-                        success: function (data) {
-                        console.log(data); // this is good
-                        }
-                });
+                // $.ajax({
+                //         url: '/tester/ArrayPost',
+                //         type: "post",
+                //         data: {'Pict1':'1', 'Pict2': '2', 'Pict3' : '3', 'Pict4': '4'},
+                //         dataType: 'JSON',
+                //         beforeSend: function (request) {
+                //                 return request.setRequestHeader('X-CSRF-Token', $("meta[name='csrf-token']").attr('content'));
+                //         },
+                //         success: function (data) {
+                //         console.log(data); // this is good
+                //         }
+                // });
         }
 
+        console.log(pict);
+        
+        console.log(x.src);
+        }
+
+        function random(){
+            for (var i=0; i<4; i++){
+                var min=0; 
+                var max=4;  
+                var random =Math.floor(Math.random() * (+max - +min)) + +min; 
+                Pict.push(random);
+            }
+            console.log(Pict);
         }
 
     </script>
@@ -159,41 +188,21 @@
             <h1><b>Time <span id="time" style="color: red">0.00</span></b></h1><br>
         </div>
         <div class="container">
-                <div class="split left" >
-                        <div class="row">
-                                <div class="col">
-                                        <img id="1" class="image"/>                                        
-                                </div>
-                                <div class="col">
-                                        <img  id="2" class="image"/>
-                                        </div>
-                                <div class="w-100"></div>
-                                <div class="col">
-                                        <img id= "3" class="image"/>
-                                </div>
-                                <div class="col">
-                                        <img id="4" class="image"/>
-                                </div>
-                        </div>
-                </div>
-                <div class="split right" >
-                                <div class="row">
-                                        <div class="col" onClick="myFunction(1)">
-                                                <img src="{{asset('svg/square.png')}}" class="image"/>
-                                        </div>
-                                        <div class="col" onClick ="myFunction(2)">
-                                                <img src="{{asset('svg/circle.png')}}" class="image"/>
-                                                </div>
-                                        {{-- <div class="w-100"></div> --}}
-                                        <div class="col" onClick="myFunction(3)">
-                                                <img  src="{{asset('svg/Triangle.png')}}" class="image"/>
-                                        </div>
-                                        <div class="col" onClick="myFunction(4)">
-                                                <img  src="{{asset('svg/square.png')}}" class="image"/>
-                                        </div>
-                                </div>
-                        </div>
-        </div>
+            <div class="row">
+                    <div class="col">
+                        <img id ="0" src="{{asset('svg/square.png')}}" class="image"/>
+                    </div>
+                    <div class="col">
+                        <img id="1" src="{{asset('svg/circle.png')}}" class="image"/>
+                            </div>
+                    <div class="w-100"></div>
+                    <div class="col">
+                        <img id="2" src="{{asset('svg/Triangle.png')}}" class="image"/>
+                    </div>
+                    <div class="col">
+                        <img id="3" src="{{asset('svg/square.png')}}" class="image"/>
+                    </div>
+            </div>
 
 
 </body>

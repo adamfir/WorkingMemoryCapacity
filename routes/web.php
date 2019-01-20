@@ -44,7 +44,12 @@ Route::prefix('tester')->name('tester.')->group(function(){
     //     Route::get('sentence', 'ReadingSpanController@sentence')->name('sentence');
     // });
     Route::get('/emotional-picture', 'EmotionPictureController@index')->name('emotional-picture');
-    Route::get('/ArraySpanTask', 'ArraySpanTaskController@index')->name('ArraySpanTask');
+    Route::prefix('ArraySpanTask')->name('ArraySpanTask')->group(function(){
+        Route::get('/Read', 'ArraySpanTaskController@index')->name('Read');
+        Route::get('/Test/', 'ArraySpanTaskController@test')->name('Test');
+        Route::post('/ArrayPost', 'ArraySpanTaskController@submit')->name('ArrayPost');
+    });
+    
 });
 Auth::routes();
 

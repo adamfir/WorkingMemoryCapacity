@@ -36,6 +36,7 @@
 
     <script>
         var i = 0;
+        var pict = [];
     function startTimer(duration, display) {
     var modal = document.getElementById('myModal');
     var start = Date.now(),
@@ -93,18 +94,24 @@
         else{
                 if(id === 1){
                         x.src = "{{asset('svg/square.png')}}";
+                        pict.push(1);
                 }
                 else if(id === 2){
                         x.src="{{asset('svg/circle.png')}}";
+                        pict.push(2);
                 }
                 else if(id === 3){
                         x.src="{{asset('svg/Triangle.png')}}";
+                        pict.push(3);
                 }
                 else{
                         x.src="{{asset('svg/square.png')}}";
+                        pict.push(4);
                 }
                 
         }
+
+        console.log(pict);
         
         console.log(x.src);
         }
@@ -124,7 +131,7 @@
                                 <div class="col">
                                         <img id="1" class="image"/>
                                 </div>
-                                <div class="col" onClick ="myFunction()">
+                                <div class="col">
                                         <img  id="2" class="image"/>
                                         </div>
                                 <div class="w-100"></div>

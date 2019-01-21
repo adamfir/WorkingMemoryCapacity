@@ -40,13 +40,11 @@
         var pict = [];
         var soal = [];
         var jawaban = [];
+        var diff, minutes, seconds;
 
     function startTimer(duration, display) {
     var modal = document.getElementById('myModal');
-    var start = Date.now(),
-            diff,
-            minutes,
-            seconds;
+    var start = Date.now()
     function timer() {
             // get the number of seconds that have elapsed since 
             // startTimer() was called
@@ -120,7 +118,7 @@
                 }
                 
         }
-        if(j === 4){
+        if(j === 4 || seconds == 0){
                 //post('/tester/ArrayPost', {Pict1:'1', Pict2:'2', Pict3:'3', Pict4:'4'});
 
                 for(var i=0; i<4;i++){
@@ -145,6 +143,7 @@
                         console.log(data); // this is good
                         }
                 });
+                window.location = "/tester/ArraySpanTask/Read";
         }
 
         }

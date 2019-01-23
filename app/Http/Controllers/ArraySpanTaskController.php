@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\ArraySpanTask;
+use App\User;
+use Auth;
 
 
 use Illuminate\Http\Request;
@@ -31,8 +33,10 @@ class ArraySpanTaskController extends Controller
         $nextRouteParam = ['task'=>'array', 'seri' => $seri, 'iterasi'=>$iterasi, 'array0'=>$array0, 'array1'=>$array1, 'array2'=>$array2, 'array3'=>$array3];
         // dd($nextRouteParam);
         // dd($posisiRandom);
+        $users = User::where('id', '=', Auth::user()->id)->first();
+        $user = $users->id;
         $cekRandom = rand(0, 3);
-        return view('pages/tester/ArraySpanTaskPertanyaan', compact('nextRoute', 'nextRouteParam', 'posisiRandom', 'cekRandom'));
+        return view('pages/tester/ArraySpanTaskPertanyaan', compact('nextRoute', 'nextRouteParam', 'posisiRandom', 'cekRandom', 'user', 'seri', 'iterasi'));
     }
 
     public function soal($task, $iterasi, $seri, $array0, $array1, $array2, $array3){
@@ -66,11 +70,17 @@ class ArraySpanTaskController extends Controller
         $params2 = $array2;
         $params3 = $array3;
 
-        return view('pages/tester/ArraySpanTask', compact('params0', 'params1', 'params2', 'params3'));
+        $user = User::where('id', '=', Auth::user()->id)->first();
+
+        return view('pages/tester/ArraySpanTask', compact('params0', 'params1', 'params2', 'params3', 'user', 'task', 'iterasi', 'seri'));
     }
     
     public function submit(Request $request){
-        $array = ArraySpanTask::create(['Pertanyaan'=> $request->Pertanyaan]);
-        
+        $array = ArraySpanTask::create(['pertanyaan'=> $request->pertanyaan]);
+    }
+
+    public function pertanyaanPost(Request $request){
+        // dd($request->user);
+        $array =  ArraySpanTask::create(['pertanyaan'=> $request->pertanyaan, 'user_id'=>$request->user, 'seri'=>$request->seri, 'iterasi'=>$request->iterasi]);
     }
 }

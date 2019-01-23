@@ -89,6 +89,10 @@
     soal[2] =  <?= $params2 ?>;
     soal[3]=  <?= $params3 ?>;
 
+    user = <?= $user ?>;
+    iterasi = <?= $iterasi ?>;
+    seri = <?= $seri ?>;
+
     console.log(soal);
     };
 
@@ -123,10 +127,10 @@
 
                 for(var i=0; i<4;i++){
                         if(pict[i] == soal[i]){
-                                jawaban= true;
+                                jawaban= 1;
                         }
                         else{
-                                jawaban= false;
+                                jawaban= 0;
                                 break
                         }
                 }
@@ -135,7 +139,7 @@
                 $.ajax({
                         url: '/tester/ArraySpanTask/ArrayPost',
                         type: "post",
-                        data: {'Pertanyaan':jawaban},
+                        data: {'pertanyaan':jawaban, 'user':user, 'iterasi': iterasi, 'seri':seri},
                         dataType: 'JSON',
                         beforeSend: function (request) {
                                 return request.setRequestHeader('X-CSRF-Token', $("meta[name='csrf-token']").attr('content'));

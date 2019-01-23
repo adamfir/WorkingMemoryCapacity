@@ -24,13 +24,7 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
   
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  
+
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
@@ -44,6 +38,7 @@
             diff,
             minutes,
             seconds;
+    var pertanyaan;
 
     function timer() {
             // get the number of seconds that have elapsed since 
@@ -56,23 +51,8 @@
         //     console.log(seconds);
 
             if(seconds == 0){
-        //     window.location = "/tester/ArraySpanTask/Test?params0="+Pict[0]+"&params1="+Pict[1]+"&params2="+Pict[2]+"&params3="+Pict[3];
-        //     //window.location = "/tester/ArraySpanTask/Test";
-        //     //modal.style.display = "block";
-        //     //setTimeout(function(){ window.location = "/ChoosePractice";}, 10000);
+                updateDB(pertanyaan);
                 window.location.replace(@json(route($nextRoute, $nextRouteParam)))
-        //     $.ajax({
-        //                 url: '/tester/ArraySpanTask/Test',
-        //                 type: "get",
-        //                 data: {'Array0': Pict[0], 'Array1': Pict[1], "Array2": Pict[2], "Array3": Pict[3]},
-        //                 dataType: 'JSON',
-        //                 beforeSend: function (request) {
-        //                         return request.setRequestHeader('X-CSRF-Token', $("meta[name='csrf-token']").attr('content'));
-        //                 },
-        //                 success: function (data) {
-        //                 console.log(data); // this is good
-        //                 }
-        //     });
             }
 
             minutes = minutes < 10 ? "0" + minutes : minutes;
@@ -81,9 +61,7 @@
             display.textContent = minutes + ":" + seconds; 
 
             if (diff <= 0) {
-            // add one second so that the count down starts at the full duration
-            // example 05:00 not 04:59
-            start = Date.now() + 1000;
+                start = Date.now() + 1000;
             }
     };
     // we don't want to wait a full second before the timer starts
@@ -128,26 +106,6 @@
                 }
                 
         }
-        if(i === 4){
-                //post('/tester/ArrayPost', {Pict1:'1', Pict2:'2', Pict3:'3', Pict4:'4'});
-
-                // $.ajax({
-                //         url: '/tester/ArrayPost',
-                //         type: "post",
-                //         data: {'Pict1':'1', 'Pict2': '2', 'Pict3' : '3', 'Pict4': '4'},
-                //         dataType: 'JSON',
-                //         beforeSend: function (request) {
-                //                 return request.setRequestHeader('X-CSRF-Token', $("meta[name='csrf-token']").attr('content'));
-                //         },
-                //         success: function (data) {
-                //         console.log(data); // this is good
-                //         }
-                // });
-        }
-
-        console.log(pict);
-        
-        console.log(x.src);
         }
 
 
@@ -240,6 +198,7 @@ function checkRandom(id){
                                 modal.style.display = "none";
                                 }
                         }
+                        pertanyaan = 1;
                 }
 
                 else{
@@ -270,6 +229,7 @@ function checkRandom(id){
                                 modal.style.display = "none";
                                 }
                         }
+                        pertanyaan = 0;
                 }
         }
 
@@ -303,6 +263,7 @@ function checkRandom(id){
                                 modal.style.display = "none";
                                 }
                         }
+                        pertanyaan = 0;
                 }
 
                 else{
@@ -334,10 +295,31 @@ function checkRandom(id){
                                 modal.style.display = "none";
                                 }
                         }
+                        pertanyaan = 1;
                 }
  
         }
 
+        updateDB(pertanyaan);
+}
+
+function updateDB(pertanyaans){
+        var user = <?= $user ?>;
+        var iterasi = <?= $iterasi ?>;
+        var seri = <?= $seri ?>;
+        console.log(user);
+        $.ajax({
+                        url: '/tester/ArraySpanTask/PertanyaanPost',
+                        type: "post",
+                        data: {'pertanyaan':pertanyaans, 'user':user, 'iterasi': iterasi, 'seri':seri},
+                        dataType: 'JSON',
+                        beforeSend: function (request) {
+                                return request.setRequestHeader('X-CSRF-Token', $("meta[name='csrf-token']").attr('content'));
+                        },
+                        success: function (data) {
+                                
+                        }
+                });
 }
 </script>
 

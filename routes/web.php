@@ -52,6 +52,7 @@ Route::prefix('tester')->name('tester.')->group(function(){
         Route::get('Soal/{task}/{seri}/{iterasi}/{array0}/{array1}/{array2}/{array3}', 'ArraySpanTaskController@soal')->name('Soal');
         Route::get('Pertanyaan/{task}/{seri}/{iterasi}/{array0}/{array1}/{array2}/{array3}/{posisiRandom}', 'ArraySpanTaskController@pertanyaan')->name('Pertanyaan');
         Route::post('/ArrayPost', 'ArraySpanTaskController@submit')->name('ArrayPost');
+        Route::post('/PertanyaanPost', 'ArraySpanTaskController@pertanyaanPost')->name('PertanyaanPost');
     });
     
 });

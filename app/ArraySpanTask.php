@@ -8,6 +8,6 @@ class ArraySpanTask extends Model
 {
     //
     protected $fillable = [
-        'Pict1', 'Pict2', 'Pict3', 'Pict4'
+        'pertanyaan', 'user_id', 'seri', 'iterasi'
     ];
 }

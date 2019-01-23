@@ -30,6 +30,8 @@ Route::prefix('tester')->name('tester.')->group(function(){
     Route::get('emotional-questionnaire', 'EmotionalQuestionController@index')->name('emotional-quest');
     Route::post('emotional-questionnaire', 'EmotionalQuestionController@submit')->name('emotional-quest-answer');
     Route::get('/focus/{task}/{seri}/{iterasi}/{focusKe}', 'TestController@focus')->name('focus');
+    Route::get('/blank/{task}/{seri}/{iterasi}', 'BlankController@blank')->name('blank');
+    Route::get('/blank1/{task}/{seri}/{iterasi}/{array0}/{array1}/{array2}/{array3}', 'BlankController@blank1')->name('blank1');
     Route::prefix('reading-span-task')->name('reading-span-')->group(function(){
         Route::get('learn/{seri}/{iterasi}', 'ReadingSpanController@learn')->name('learn');
         Route::get('judge/{taskId}', 'ReadingSpanController@judge')->name('judge');
@@ -44,9 +46,11 @@ Route::prefix('tester')->name('tester.')->group(function(){
     //     Route::get('sentence', 'ReadingSpanController@sentence')->name('sentence');
     // });
     Route::get('/emotional-picture', 'EmotionPictureController@index')->name('emotional-picture');
-    Route::prefix('ArraySpanTask')->name('ArraySpanTask')->group(function(){
-        Route::get('/Read', 'ArraySpanTaskController@index')->name('Read');
-        Route::get('/Test/', 'ArraySpanTaskController@test')->name('Test');
+    Route::prefix('ArraySpanTask')->name('ArraySpanTask-')->group(function(){
+        Route::get('Read/{seri}/{iterasi}', 'ArraySpanTaskController@index')->name('Read');
+        Route::get('Test/{task}/{seri}/{iterasi}/{array0}/{array1}/{array2}/{array3}', 'ArraySpanTaskController@test')->name('Test');
+        Route::get('Soal/{task}/{seri}/{iterasi}/{array0}/{array1}/{array2}/{array3}', 'ArraySpanTaskController@soal')->name('Soal');
+        Route::get('Pertanyaan/{task}/{seri}/{iterasi}/{array0}/{array1}/{array2}/{array3}/{posisiRandom}', 'ArraySpanTaskController@pertanyaan')->name('Pertanyaan');
         Route::post('/ArrayPost', 'ArraySpanTaskController@submit')->name('ArrayPost');
     });
     

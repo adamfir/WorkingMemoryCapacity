@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateReadingSpanTable extends Migration
+class UpdateReadingSpanTaskAddRecallMethod extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class UpdateReadingSpanTable extends Migration
      */
     public function up()
     {
+        //
         Schema::table('reading_span_tasks', function(Blueprint $table){
-            $table->string('recall_method')->after('word')->default('free');
+            $table->string('recall_method')->default('free');
         });
     }
 
@@ -25,6 +26,7 @@ class UpdateReadingSpanTable extends Migration
      */
     public function down()
     {
+        //
         Schema::table('reading_span_tasks', function(Blueprint $table){
             $table->dropColumn('recall_method');
         });

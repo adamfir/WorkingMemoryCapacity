@@ -34,16 +34,21 @@
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
-
     <script>
         var i = 0;
         var Pict = [];
+        var hasil1;
     function startTimer(duration, display) {
     var modal = document.getElementById('myModal');
     var start = Date.now(),
             diff,
             minutes,
             seconds;
+     var array = <?php echo json_encode($data,  JSON_PRETTY_PRINT) ?>;
+     var hasil = JSON.stringify(array);
+     hasil1 = JSON.parse(hasil);
+//     console.log(array[0])
+     console.log(hasil1.array)
     function timer() {
             // get the number of seconds that have elapsed since 
             // startTimer() was called
@@ -55,25 +60,24 @@
         //     console.log(seconds);
 
             if(seconds == 0){
-            window.location = "/tester/ArraySpanTask/Test?params0="+Pict[0]+"&params1="+Pict[1]+"&params2="+Pict[2]+"&params3="+Pict[3];
-            //window.location = "/tester/ArraySpanTask/Test";
-            //modal.style.display = "block";
+        //     window.location = "/tester/ArraySpanTask/Test?params0="+Pict[0]+"&params1="+Pict[1]+"&params2="+Pict[2]+"&params3="+Pict[3];
+        //     //window.location = "/tester/ArraySpanTask/Test";
+        //     //modal.style.display = "block";
+        //     //setTimeout(function(){ window.location = "/ChoosePractice";}, 10000);
+        window.location.replace(@json(route($nextRoute, $nextRouteParam)))
 
-            //setTimeout(function(){ window.location = "/ChoosePractice";}, 10000);
-
-
-            $.ajax({
-                        url: '/tester/ArraySpanTask/Test',
-                        type: "get",
-                        data: {'Array0': Pict[0], 'Array1': Pict[1], "Array2": Pict[2], "Array3": Pict[3]},
-                        dataType: 'JSON',
-                        beforeSend: function (request) {
-                                return request.setRequestHeader('X-CSRF-Token', $("meta[name='csrf-token']").attr('content'));
-                        },
-                        success: function (data) {
-                        console.log(data); // this is good
-                        }
-            });
+        //     $.ajax({
+        //                 url: '/tester/ArraySpanTask/Test',
+        //                 type: "get",
+        //                 data: {'Array0': Pict[0], 'Array1': Pict[1], "Array2": Pict[2], "Array3": Pict[3]},
+        //                 dataType: 'JSON',
+        //                 beforeSend: function (request) {
+        //                         return request.setRequestHeader('X-CSRF-Token', $("meta[name='csrf-token']").attr('content'));
+        //                 },
+        //                 success: function (data) {
+        //                 console.log(data); // this is good
+        //                 }
+        //     });
             }
 
             minutes = minutes < 10 ? "0" + minutes : minutes;
@@ -101,13 +105,13 @@
     
     for(var i = 0 ; i<4; i++){
         var x = document.getElementById(i);
-        if(Pict[i] === 1){
+        if(hasil1.array[i] === 0){
                 x.src = "{{asset('svg/square.png')}}";
         }
-        else if(Pict[i] === 2){
+        else if(hasil1.array[i] === 1){
                 x.src="{{asset('svg/circle.png')}}";
         }
-        else if(Pict[i] === 3){
+        else if(hasil1.array[i] === 2){
                 x.src="{{asset('svg/Triangle.png')}}";
         }
         else{
@@ -188,18 +192,23 @@
             <h1><b>Time <span id="time" style="color: red">0.00</span></b></h1><br>
         </div>
         <div class="container">
+        <?php echo "<script>document.write(hasil)</script>" ?>
             <div class="row">
                     <div class="col">
+                        <div class="centered">1</div>
                         <img id ="0" src="{{asset('svg/square.png')}}" class="image"/>
                     </div>
                     <div class="col">
+                        <div class="centered">2</div>
                         <img id="1" src="{{asset('svg/circle.png')}}" class="image"/>
                             </div>
                     <div class="w-100"></div>
                     <div class="col">
+                        <div class="centered">3</div>
                         <img id="2" src="{{asset('svg/Triangle.png')}}" class="image"/>
                     </div>
                     <div class="col">
+                        <div class="centered">4</div>
                         <img id="3" src="{{asset('svg/square.png')}}" class="image"/>
                     </div>
             </div>

@@ -39,7 +39,7 @@
         var j = 0;
         var pict = [];
         var soal = [];
-        var jawaban = [];
+        var jawaban ;
         var diff, minutes, seconds;
 
     function startTimer(duration, display) {
@@ -123,10 +123,11 @@
 
                 for(var i=0; i<4;i++){
                         if(pict[i] == soal[i]){
-                                jawaban[i] = true;
+                                jawaban= true;
                         }
                         else{
-                                jawaban[i] = false;
+                                jawaban= false;
+                                break
                         }
                 }
                 console.log(jawaban);
@@ -134,7 +135,7 @@
                 $.ajax({
                         url: '/tester/ArraySpanTask/ArrayPost',
                         type: "post",
-                        data: {'Pict1':jawaban[0], 'Pict2': jawaban[1], 'Pict3' : jawaban[2], 'Pict4': jawaban[3]},
+                        data: {'Pertanyaan':jawaban},
                         dataType: 'JSON',
                         beforeSend: function (request) {
                                 return request.setRequestHeader('X-CSRF-Token', $("meta[name='csrf-token']").attr('content'));
@@ -143,7 +144,7 @@
                         console.log(data); // this is good
                         }
                 });
-                window.location = "/tester/ArraySpanTask/Read";
+                // window.location = "/tester/ArraySpanTask/Read";
         }
 
         }

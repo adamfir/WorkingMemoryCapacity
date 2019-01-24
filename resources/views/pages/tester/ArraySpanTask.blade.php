@@ -60,6 +60,20 @@
             //modal.style.display = "block";
 
             //setTimeout(function(){ window.location = "/ChoosePractice";}, 10000);
+            $.ajax({
+                        url: '/tester/ArraySpanTask/ArrayPost',
+                        type: "post",
+                        data: {'penyusunan':'0', 'user':user, 'iterasi': iterasi, 'seri':seri},
+                        dataType: 'JSON',
+                        beforeSend: function (request) {
+                                return request.setRequestHeader('X-CSRF-Token', $("meta[name='csrf-token']").attr('content'));
+                        },
+                        success: function (data) {
+                                console.log(data); // this is good
+                        }
+                });
+                // window.location = "/tester/ArraySpanTask/Read";
+                window.location.replace(@json(route($nextRoute, $nextRouteParam)))
 
             }
 
@@ -122,7 +136,7 @@
                 }
                 
         }
-        if(j === 4 || seconds == 0){
+        if(j === 4){
                 //post('/tester/ArrayPost', {Pict1:'1', Pict2:'2', Pict3:'3', Pict4:'4'});
 
                 for(var i=0; i<4;i++){
@@ -139,13 +153,30 @@
                 $.ajax({
                         url: '/tester/ArraySpanTask/ArrayPost',
                         type: "post",
-                        data: {'pertanyaan':jawaban, 'user':user, 'iterasi': iterasi, 'seri':seri},
+                        data: {'penyusunan':jawaban, 'user':user, 'iterasi': iterasi, 'seri':seri},
                         dataType: 'JSON',
                         beforeSend: function (request) {
                                 return request.setRequestHeader('X-CSRF-Token', $("meta[name='csrf-token']").attr('content'));
                         },
                         success: function (data) {
-                        console.log(data); // this is good
+                                console.log(data); // this is good
+                        }
+                });
+                // window.location = "/tester/ArraySpanTask/Read";
+                window.location.replace(@json(route($nextRoute, $nextRouteParam)))
+
+        }
+        else if(seconds == 0){
+                $.ajax({
+                        url: '/tester/ArraySpanTask/ArrayPost',
+                        type: "post",
+                        data: {'penyusunan':'0', 'user':user, 'iterasi': iterasi, 'seri':seri},
+                        dataType: 'JSON',
+                        beforeSend: function (request) {
+                                return request.setRequestHeader('X-CSRF-Token', $("meta[name='csrf-token']").attr('content'));
+                        },
+                        success: function (data) {
+                                console.log(data); // this is good
                         }
                 });
                 // window.location = "/tester/ArraySpanTask/Read";

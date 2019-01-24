@@ -9,6 +9,11 @@ class BlankController extends Controller
     //
     public function blank($task, $seri, $iterasi){
         // if (Auth::user()->role == 2){
+            $iterasi = $iterasi +1;
+            if($iterasi > 3){
+                $iterasi = 1;
+                $seri = $seri+1;
+            }
             $fokusKe = 1;
             if($task == 'array'){
                 if($fokusKe == 1){
@@ -41,31 +46,7 @@ class BlankController extends Controller
             else{
                 // array task
             }
-        // }
-        // else if(Auth::user()->role >= 3){
-        //     if ($task == 'array'){
-        //         if($fokusKe == 1){
-        //             // return halaman induski emosi (gambar)
-        //         }
-        //         else if($fokusKe == 2){
-        //             // return halamn kalimat dan kata
-        //         }
-        //         else if($fokusKe == 3){
-        //             // return halaman recall kata
-        //         }
-        //         else {
-        //             // error
-        //             return view('pages.test.blank', compact('seri','iterasi','waktu'));
-        //         }
-        //     }
-        //     else{
-        //         // array task
-        //     }
-        // }
-        // else{
-        //     // error
-        //     return view('pages.test.home');
-        // }
+
     }
 
     function blank1($task, $seri, $iterasi, $array0, $array1, $array2, $array3){

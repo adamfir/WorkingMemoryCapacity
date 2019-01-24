@@ -51,8 +51,7 @@
         //     console.log(seconds);
 
             if(seconds == 0){
-                updateDB(pertanyaan);
-                window.location.replace(@json(route($nextRoute, $nextRouteParam)))
+                updateDB(0);
             }
 
             minutes = minutes < 10 ? "0" + minutes : minutes;
@@ -120,7 +119,7 @@
         </div>
         <div class="container">
                 
-        <button id="myBtn">Open Modal</button>
+        <button id="myBtn" hidden>Open Modal</button>
 
         <div class="centered">
                 <p style="font-size:43px; color:black"> Apakah Ada Perubahan Gambar Nomor {{$cekRandom+1}}</p>
@@ -320,6 +319,7 @@ function updateDB(pertanyaans){
                                 
                         }
                 });
+        window.location.replace(@json(route($nextRoute, $nextRouteParam)))
 }
 </script>
 
